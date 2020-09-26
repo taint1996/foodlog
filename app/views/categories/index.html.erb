@@ -1,0 +1,21 @@
+<% content_for :title do %>
+  FoodLog &ndash; <%= DateTime.now.to_s(:nice_date) %>
+<% end %>
+
+<div class="columns mt-6 is-centered">
+  <% @categories.each do |category| %>
+    <div class="columns is-one-quarter">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title"><%= category.title %></p>
+        </header>
+
+        <div class="card-footer">          
+          <p><%= link_to 'Show', category, class: "card-footer-item" %></p>
+          <p><%= link_to 'Edit', edit_category_path(category), class: "card-footer-item" %></p>
+          <p><%= link_to 'Destroy', category, method: :delete, data: { confirm: "Are you sure  you want to delete category #{category.title}" }, class: "card-footer-item" %></p>        
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
